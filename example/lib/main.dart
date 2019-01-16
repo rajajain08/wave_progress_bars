@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
           initalColor: Colors.grey,
           progressColor: Colors.red,
           backgroundColor: Colors.white,
+          timeInMilliSeconds: 2000,
           isHorizontallyAnimated: true,
           isVerticallyAnimated: true,
         ),
