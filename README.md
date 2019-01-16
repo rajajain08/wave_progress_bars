@@ -6,12 +6,18 @@ A package provides an easy way to add wave bars in Flutter project.
     <img src="https://github.com/rajajain08/wave_progress_bars/blob/master/screenshots/wavebar.gif?raw=true" width=300px/>
 </p>
 
-## How to use
+## Getting Started
 
-```dart
-import  'package:wave_progress_bars/wave_progress_bars.dart';
+You should ensure that you add the following dependency in your Flutter project.
 
+```yaml
+dependencies:
+  wave_progress_bars: "^0.0.1"
 ```
+
+You should then run `flutter packages upgrade` or update your packages in IntelliJ.
+
+## How to use
 
 ```dart
 import 'package:wave_progress_bars/wave_progress_bars.dart';
