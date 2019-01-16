@@ -1,8 +1,8 @@
 library wave_progress_bars;
 
 import 'package:flutter/material.dart';
-import 'package:wave_progress_bars/backgroundPainter.dart';
-import 'package:wave_progress_bars/singleBarPainter.dart';
+import 'package:wave_progress_bars/background_painter.dart';
+import 'package:wave_progress_bars/single_bar_painter.dart';
 import 'dart:math';
 
 class WaveProgressBar extends StatefulWidget {
