@@ -42,6 +42,7 @@ class WaveProgressBarState extends State<WaveProgressBar>
   AnimationController controller;
   double begin;
   double end;
+  
   @override
   void initState() {
     begin = 0;
@@ -59,6 +60,12 @@ class WaveProgressBarState extends State<WaveProgressBar>
     controller.forward();
   }
 
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+  
   @override
   Widget build(BuildContext context) {
     arrayOfBars.add(CustomPaint(
