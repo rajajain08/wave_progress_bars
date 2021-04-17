@@ -1,13 +1,13 @@
 name: wave_progress_bars
 description: >-
   A package provides an easy way to add wave bars in Flutter project.
-version: 0.0.1
+version: 0.1.0
 author: Raja Jain<rajajain08@gmail.com>
 homepage: https://github.com/rajajain08/wave_progress_bars
 issue_tracker: https://github.com/rajajain08/wave_progress_bars/issues
 
 environment:
-  sdk: ">=2.0.0-dev.68.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:

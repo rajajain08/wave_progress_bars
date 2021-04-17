@@ -10,39 +10,37 @@ class WaveProgressBar extends StatefulWidget {
   final List<double> listOfHeights;
   final double width;
   final Color initalColor;
-  final Color progressColor;
+  final Color? progressColor;
   final Color backgroundColor;
   final int timeInMilliSeconds;
   final bool isVerticallyAnimated;
   final bool isHorizontallyAnimated;
 
-  WaveProgressBar({
+  const WaveProgressBar({
     this.isVerticallyAnimated = true,
     this.isHorizontallyAnimated = true,
-    this.listOfHeights,
-    this.initalColor = Colors.red,
-    this.progressColor = Colors.green,
+    required this.listOfHeights,
+    this.initalColor = Colors.grey,
+    this.progressColor = Colors.red,
     this.backgroundColor = Colors.white,
-    @required this.width,
-    @required this.progressPercentage,
+    required this.width,
+    required this.progressPercentage,
     this.timeInMilliSeconds = 20000,
   });
 
   @override
-  WaveProgressBarState createState() {
-    return new WaveProgressBarState();
-  }
+  WaveProgressBarState createState() => WaveProgressBarState();
 }
 
 class WaveProgressBarState extends State<WaveProgressBar>
     with SingleTickerProviderStateMixin {
-  final List<Widget> arrayOfBars = new List();
-  Animation<double> horizontalAnimation;
-  Animation<double> verticalAnimation;
-  AnimationController controller;
-  double begin;
-  double end;
-  
+  final List<Widget> arrayOfBars = [];
+  late Animation<double> horizontalAnimation;
+  late Animation<double> verticalAnimation;
+  late AnimationController controller;
+  late double begin;
+  late double end;
+
   @override
   void initState() {
     begin = 0;
@@ -65,15 +63,15 @@ class WaveProgressBarState extends State<WaveProgressBar>
     controller.dispose();
     super.dispose();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     arrayOfBars.add(CustomPaint(
       painter: BackgroundBarPainter(
-        widthOfContainer: (widget.isHorizontallyAnimated)
+        containerWidth: (widget.isHorizontallyAnimated)
             ? horizontalAnimation.value
             : widget.width,
-        heightOfContainer: widget.listOfHeights.reduce(max),
+        containerHeight: widget.listOfHeights.reduce(max),
         progresPercentage: widget.progressPercentage,
         initialColor: widget.initalColor,
         progressColor: widget.progressColor,
@@ -90,15 +88,15 @@ class WaveProgressBarState extends State<WaveProgressBar>
       arrayOfBars.add(
         CustomPaint(
           painter: SingleBarPainter(
-              startingPosition:
-                  (i * ((widget.width / widget.listOfHeights.length))),
-              singleBarWidth: widget.width / widget.listOfHeights.length,
-              maxSeekBarHeight: widget.listOfHeights.reduce(max) + 1,
-              actualSeekBarHeight: (widget.isVerticallyAnimated)
-                  ? verticalAnimation.value
-                  : widget.listOfHeights[i],
-              heightOfContainer: widget.listOfHeights.reduce(max),
-              backgroundColor: widget.backgroundColor),
+            startingPosition: i * (widget.width / widget.listOfHeights.length),
+            singleBarWidth: widget.width / widget.listOfHeights.length,
+            maxSeekBarHeight: widget.listOfHeights.reduce(max) + 1,
+            actualSeekBarHeight: (widget.isVerticallyAnimated)
+                ? verticalAnimation.value
+                : widget.listOfHeights[i],
+            heightOfContainer: widget.listOfHeights.reduce(max),
+            backgroundColor: widget.backgroundColor,
+          ),
         ),
       );
     }
