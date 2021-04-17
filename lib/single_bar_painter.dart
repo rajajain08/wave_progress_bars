@@ -11,18 +11,18 @@ class SingleBarPainter extends CustomPainter {
   final double actualSeekBarHeight;
   final double startingPosition;
   final double heightOfContainer;
-  SingleBarPainter(
-      {this.backgroundColor,
-      this.barBorderRadius = 0,
-      @required this.singleBarWidth,
-      @required this.maxSeekBarHeight,
-      @required this.actualSeekBarHeight,
-      @required this.heightOfContainer,
-      @required this.startingPosition})
-      : trackPaint = new Paint()
+  SingleBarPainter({
+    required this.backgroundColor,
+    this.barBorderRadius = 0,
+    required this.singleBarWidth,
+    required this.maxSeekBarHeight,
+    required this.actualSeekBarHeight,
+    required this.heightOfContainer,
+    required this.startingPosition,
+  })   : trackPaint = Paint()
           ..color = barColor
           ..style = PaintingStyle.fill,
-        aboveAndBelowPaint = new Paint()
+        aboveAndBelowPaint = Paint()
           ..color = backgroundColor
           ..style = PaintingStyle.fill;
 
@@ -32,9 +32,10 @@ class SingleBarPainter extends CustomPainter {
 
     canvas.drawRRect(
         RRect.fromRectAndRadius(
-            Rect.fromLTWH(startingPosition, -heightOfContainer / 1.9,
-                singleBarWidth, outerSideHeight / 2),
-            Radius.circular(0)),
+          Rect.fromLTWH(startingPosition, -heightOfContainer / 1.9,
+              singleBarWidth, outerSideHeight / 2),
+          const Radius.circular(0),
+        ),
         aboveAndBelowPaint);
     canvas.drawRRect(
         RRect.fromRectAndRadius(
@@ -54,13 +55,14 @@ class SingleBarPainter extends CustomPainter {
                     actualSeekBarHeight,
                 singleBarWidth,
                 outerSideHeight / 2),
-            Radius.circular(0)),
+            const Radius.circular(0)),
         aboveAndBelowPaint);
     canvas.drawRRect(
         RRect.fromRectAndRadius(
-            Rect.fromLTWH(startingPosition, -heightOfContainer / 2,
-                0.2 * singleBarWidth, heightOfContainer),
-            Radius.circular(0)),
+          Rect.fromLTWH(startingPosition, -heightOfContainer / 2,
+              0.2 * singleBarWidth, heightOfContainer),
+          const Radius.circular(0),
+        ),
         aboveAndBelowPaint);
   }
 
